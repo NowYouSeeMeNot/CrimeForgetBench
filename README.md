@@ -6,7 +6,6 @@ Dynamic Event Matching & Refusal-Based Right-To-Be-Forgotten Enforcement
 ## Table of Contents
 - [Background & Motivation](#background--motivation)
 - [Key Features](#key-features)
-- [Repository Structure](#repository-structure)
 - [Method Overview](#method-overview)
 - [Architecture](#architecture)
 - [Core Components](#core-components)
@@ -47,38 +46,6 @@ This project implements a *dynamic access-control gateway* that detects and bloc
 - High precision blocking under high forgetting ratios (83%+ at 30–50% forgetting proportion)
 - Zero parameter modification of the base LLM
 
-## Repository Structure
-```
-.
-├── data/
-│   ├── crimeforgetbench/           # Dataset (place raw / processed files here)
-│   │   ├── raw/                    # Original/legal-sourced docs (not committed)
-│   │   ├── processed/              # Tokenized / normalized JSONL
-│   │   └── splits/                 # train / val / test / forget_set.jsonl
-├── configs/
-│   ├── retrieval.yaml
-│   ├── reranker.yaml
-│   ├── schema.yaml
-│   └── service.yaml
-├── src/
-│   ├── indexing/                   # BM25 & vector index builders
-│   ├── retrieval/                  # Hybrid scorer & fusion
-│   ├── reranker/                   # PLM-based sequence likelihood re-ranker
-│   ├── schema/                     # Schema extraction & filling logic
-│   ├── checker/                    # LLM-based intent & matching judge
-│   ├── dialogue/                   # Multi-turn clarification engine
-│   ├── refusal/                    # Template selection & rendering
-│   ├── api/                        # Optional FastAPI / Flask service
-│   └── utils/
-├── scripts/
-│   ├── build_indices.py
-│   ├── run_experiment.py
-│   ├── evaluate.py
-│   └── export_refusals.py
-├── requirements.txt
-├── README.md
-└── LICENSE
-```
 
 ## Method Overview
 1. User query arrives (e.g., “What are the details of Joseph’s theft case?”).
